@@ -1,0 +1,14 @@
+{
+  "name": "moth-and-lantern-site",
+  "version": "1.0.0",
+  "description": "Portfolio website of Moth & Lantern, an independent game studio, with a consultation form that sends requests to Telegram",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --env-file=.env server.js"
+  },
+  "engines": {
+    "node": ">=20.6"
+  },
+  "license": "MIT"
+}
