@@ -14,96 +14,98 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/styles.css">
+<!-- язык выбираем до отрисовки, чтобы не было мигания -->
+<script>try{var l=localStorage.getItem("ml.lang")||((navigator.language||"").toLowerCase().indexOf("ru")===0?"ru":"en");document.documentElement.lang=l==="ru"?"ru":"en"}catch(e){}</script>
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <!-- ============ HEADER ============ -->
 <header class="top" id="top">
   <div class="wrap top__in">
-    <a class="brand" href="#top" aria-label="Moth & Lantern — home">
+    <a class="brand" href="#top" aria-label="Moth & Lantern">
       <svg class="brand__mark" viewBox="0 0 40 40" aria-hidden="true"><use href="#mark"/></svg>
       <span class="brand__name">Moth <i>&amp;</i> Lantern</span>
     </a>
     <nav class="nav" id="nav" aria-label="Main">
-      <a href="#studio">Studio</a>
-      <a href="#projects">Projects</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#founder">Founder</a>
-      <a href="#process">Process</a>
-      <a class="btn btn--brass nav__cta" href="#contact">Book a consultation</a>
+      <a href="#studio" data-i18n="nav.studio">Studio</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#founder" data-i18n="nav.founder">Founder</a>
+      <a href="#estimate" data-i18n="nav.estimate">Estimate</a>
+      <a class="btn btn--brass nav__cta" href="#contact" data-i18n="nav.cta">Book a consultation</a>
     </nav>
+    <div class="lang" role="group" aria-label="Language">
+      <button class="lang__btn" data-lang="en" aria-pressed="true">EN</button>
+      <button class="lang__btn" data-lang="ru" aria-pressed="false">RU</button>
+    </div>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
   </div>
 </header>
 
 <main id="main">
 
-<!-- ============ HERO ============ -->
-<section class="hero">
+<!-- ============ HERO (фонарь) ============ -->
+<section class="hero" id="hero">
   <div class="hero__art" aria-hidden="true">
     <img src="/assets/gallery/case-history-exterior.jpg" alt="">
+    <canvas class="hero__lantern" id="lantern"></canvas>
   </div>
   <div class="wrap hero__in">
-    <p class="eyebrow">Independent game studio · Est. 2026</p>
-    <h1 class="hero__title">Games that keep<br>a <em>light on</em><br>after dark.</h1>
-    <p class="hero__lead">Moth &amp; Lantern builds narrative mysteries and real-time multiplayer games for PC and the browser — from first prototype to release.</p>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Independent game studio · Est. 2026</p>
+    <h1 class="hero__title" data-i18n="hero.title">Games that keep<br>a <em>light on</em><br>after dark.</h1>
+    <p class="hero__lead" data-i18n="hero.lead">Moth &amp; Lantern builds narrative mysteries and real-time multiplayer games for PC and the browser — from first prototype to release.</p>
     <div class="hero__actions">
-      <a class="btn btn--brass" href="#contact">Book a free consultation</a>
-      <a class="btn btn--ghost" href="#projects">See our projects</a>
+      <a class="btn btn--brass" href="#contact" data-i18n="hero.cta">Book a free consultation</a>
+      <a class="btn btn--ghost" href="#projects" data-i18n="hero.cta2">See our projects</a>
     </div>
     <dl class="facts">
-      <div><dt>Titles</dt><dd>4</dd></div>
-      <div><dt>Engines</dt><dd>Unity · Web</dd></div>
-      <div><dt>Players online</dt><dd>2–10 per room</dd></div>
-      <div><dt>Response</dt><dd>within 24 h</dd></div>
+      <div><dt data-i18n="facts.titles">Titles</dt><dd>4</dd></div>
+      <div><dt data-i18n="facts.engines">Engines</dt><dd>Unity · Web</dd></div>
+      <div><dt data-i18n="facts.online">Players online</dt><dd data-i18n="facts.onlineV">2–10 per room</dd></div>
+      <div><dt data-i18n="facts.response">Response</dt><dd data-i18n="facts.responseV">within 24 h</dd></div>
     </dl>
   </div>
+  <p class="hero__hint" id="lantern-hint" aria-hidden="true"><span class="hero__hint-dot"></span><span id="lantern-hint-text">Move the cursor — the lantern follows</span></p>
 </section>
 
 <!-- ============ STUDIO ============ -->
 <section class="section" id="studio">
   <div class="wrap studio">
     <div class="studio__intro">
-      <p class="eyebrow">01 — Studio</p>
-      <h2 class="h2">Small studio. <em>Full cycle.</em></h2>
-      <p>We are a compact, developer-led studio. Every project is designed, written, coded and shipped in-house, so the person you talk to at the first consultation is the person who builds your game.</p>
-      <p>We focus on two things we know deeply: atmospheric story-driven games, and multiplayer games that run in a browser on any phone or laptop — no installs, just a link.</p>
+      <p class="eyebrow" data-i18n="studio.eyebrow">01 — Studio</p>
+      <h2 class="h2" data-i18n="studio.h2">Small studio. <em>Full cycle.</em></h2>
+      <p data-i18n="studio.p1">We are a compact, developer-led studio. Every project is designed, written, coded and shipped in-house, so the person you talk to at the first consultation is the person who builds your game.</p>
+      <p data-i18n="studio.p2">We focus on two things we know deeply: atmospheric story-driven games, and multiplayer games that run in a browser on any phone or laptop — no installs, just a link.</p>
     </div>
     <ul class="pillars">
       <li>
-        <span class="pillar__ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7 M9 13h7 M9 17h4"/></svg>
-        </span>
-        <h3>Narrative &amp; mystery</h3>
-        <p>Point-and-click and hidden-object games with researched settings, layered stories and puzzles that respect the player.</p>
+        <span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z M9 9h7 M9 13h7 M9 17h4"/></svg></span>
+        <h3 data-i18n="pillar1.h">Narrative &amp; mystery</h3>
+        <p data-i18n="pillar1.p">Point-and-click and hidden-object games with researched settings, layered stories and puzzles that respect the player.</p>
       </li>
       <li>
-        <span class="pillar__ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3 2.5-5 5-5s5 2 5 5 M12 20c0-3 2.5-5 5-5s5 2 5 5"/></svg>
-        </span>
-        <h3>Real-time multiplayer</h3>
-        <p>Server-authoritative browser games with rooms, invite links, reconnection and bots — built on Node.js and WebSockets.</p>
+        <span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="7" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M2 20c0-3 2.5-5 5-5s5 2 5 5 M12 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></span>
+        <h3 data-i18n="pillar2.h">Real-time multiplayer</h3>
+        <p data-i18n="pillar2.p">Server-authoritative browser games with rooms, invite links, reconnection and bots — built on Node.js and WebSockets.</p>
       </li>
       <li>
-        <span class="pillar__ico" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M4 20l4-1L19 8l-3-3L5 16z M14 7l3 3"/></svg>
-        </span>
-        <h3>Art &amp; interface</h3>
-        <p>Art direction, UI and UX designed together with the code, so the game looks finished on every screen size.</p>
+        <span class="pillar__ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l4-1L19 8l-3-3L5 16z M14 7l3 3"/></svg></span>
+        <h3 data-i18n="pillar3.h">Art &amp; interface</h3>
+        <p data-i18n="pillar3.p">Art direction, UI and UX designed together with the code, so the game looks finished on every screen size.</p>
       </li>
     </ul>
   </div>
   <div class="wrap">
     <div class="services">
-      <p class="services__label">What we can do for you</p>
+      <p class="services__label" data-i18n="services.label">What we can do for you</p>
       <ul class="tags">
-        <li>Game prototype in 2–4 weeks</li>
-        <li>Unity development (C#)</li>
-        <li>Browser &amp; multiplayer games</li>
-        <li>Narrative &amp; puzzle design</li>
-        <li>UI / UX for games</li>
-        <li>Deployment &amp; support</li>
+        <li data-i18n="tag1">Game prototype in 2–4 weeks</li>
+        <li data-i18n="tag2">Unity development (C#)</li>
+        <li data-i18n="tag3">Browser &amp; multiplayer games</li>
+        <li data-i18n="tag4">Narrative &amp; puzzle design</li>
+        <li data-i18n="tag5">UI / UX for games</li>
+        <li data-i18n="tag6">Deployment &amp; support</li>
       </ul>
     </div>
   </div>
@@ -113,129 +115,132 @@
 <section class="section section--alt" id="projects">
   <div class="wrap">
     <div class="sechead">
-      <p class="eyebrow">02 — Projects</p>
-      <h2 class="h2">Case files</h2>
-      <p class="sechead__note">Every project we take on gets a file. Here are the open ones.</p>
+      <p class="eyebrow" data-i18n="proj.eyebrow">02 — Projects</p>
+      <h2 class="h2" data-i18n="proj.h2">Case files</h2>
+      <p class="sechead__note" data-i18n="proj.note">Every project we take on gets a file. Here are the open ones.</p>
     </div>
 
     <div class="files">
-      <!-- FILE 001 -->
+      <!-- FILE 001 — Last Card -->
       <article class="file">
         <a class="file__media" href="https://uno-with-friends-online.onrender.com" target="_blank" rel="noopener">
           <img src="/assets/gallery/last-card-table.jpg" alt="Last Card: the game table with cards, players and the discard pile" loading="lazy">
         </a>
         <div class="file__body">
           <div class="file__meta">
-            <span>File 001</span>
-            <span class="status status--live">Released · 2026</span>
+            <span><span data-i18n="file">File</span> 001</span>
+            <span class="status status--live"><span data-i18n="st.released">Released</span> · 2026</span>
           </div>
           <h3 class="file__title">Last Card</h3>
-          <p class="file__genre">Online multiplayer card game · Browser</p>
-          <p>A fast card game in the spirit of Uno for 2–10 players. Each player joins from their own phone or computer through an invite link — no installation and no accounts. The server checks every move, so hands stay hidden and the game stays fair.</p>
+          <p class="file__genre" data-i18n="lc.genre">Online multiplayer card game · Browser</p>
+          <p data-i18n="lc.p">A fast card game in the spirit of Uno for 2–10 players. Each player joins from their own phone or computer through an invite link — no installation and no accounts. The server checks every move, so hands stay hidden and the game stays fair.</p>
           <ul class="file__specs">
-            <li><b>Platform</b> Web, mobile and desktop</li>
-            <li><b>Stack</b> Node.js · Express · Socket.IO</li>
-            <li><b>Features</b> Rooms, invites, bots, reconnection</li>
+            <li><b data-i18n="sp.platform">Platform</b><span data-i18n="lc.platform">Web, mobile and desktop</span></li>
+            <li><b data-i18n="sp.stack">Stack</b>Node.js · Express · Socket.IO</li>
+            <li><b data-i18n="sp.features">Features</b><span data-i18n="lc.features">Rooms, invites, bots, reconnection</span></li>
           </ul>
           <div class="file__links">
-            <a class="btn btn--brass" href="https://uno-with-friends-online.onrender.com" target="_blank" rel="noopener">Play now
+            <a class="btn btn--brass" href="https://uno-with-friends-online.onrender.com" target="_blank" rel="noopener"><span data-i18n="btn.play">Play now</span>
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7 M9 7h8v8"/></svg></a>
             <a class="btn btn--ghost" href="https://github.com/MairamKenzh/uno-with-friends-online" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" aria-hidden="true" class="gh"><use href="#gh"/></svg>Source code</a>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="gh"><use href="#gh"/></svg><span data-i18n="btn.source">Source code</span></a>
           </div>
         </div>
       </article>
 
-      <!-- FILE 002 -->
+      <!-- FILE 002 — Case History -->
       <article class="file file--flip">
         <div class="file__media">
           <img src="/assets/gallery/case-history-corridor.jpg" alt="Case History concept art: a long hotel corridor with a lit doorway at the end" loading="lazy">
         </div>
         <div class="file__body">
           <div class="file__meta">
-            <span>File 002</span>
-            <span class="status status--wip">In production</span>
+            <span><span data-i18n="file">File</span> 002</span>
+            <span class="status status--wip" data-i18n="st.wip">In production</span>
           </div>
           <h3 class="file__title">Case History</h3>
-          <p class="file__genre">Mystery point-and-click · Hidden object · PC</p>
-          <p>Winter, the 1920s. A grand hotel high in the Alps hides its past as a sanatorium. Search the rooms, read the files nobody was meant to see, and find out what happened to the women who were sent here “for a rest”.</p>
-          <p>The story draws on real history: diagnoses of “hysteria” used to control women, and the shell shock that soldiers brought home from the First World War.</p>
+          <p class="file__genre" data-i18n="ch.genre">Mystery point-and-click · Hidden object · PC</p>
+          <p data-i18n="ch.p1">Winter, the 1920s. A grand hotel high in the Alps hides its past as a sanatorium. Search the rooms, read the files nobody was meant to see, and find out what happened to the women who were sent here “for a rest”.</p>
+          <p data-i18n="ch.p2">The story draws on real history: diagnoses of “hysteria” used to control women, and the shell shock that soldiers brought home from the First World War.</p>
           <ul class="file__specs">
-            <li><b>Engine</b> Unity · C#</li>
-            <li><b>Scope</b> Act I · 30–40 minutes of play</li>
-            <li><b>Language</b> English</li>
+            <li><b data-i18n="sp.engine">Engine</b>Unity · C#</li>
+            <li><b data-i18n="sp.scope">Scope</b><span data-i18n="ch.scope">Act I · 30–40 minutes of play</span></li>
+            <li><b data-i18n="sp.language">Language</b><span data-i18n="ch.lang">English</span></li>
           </ul>
           <div class="file__links">
-            <a class="btn btn--ghost" href="#gallery" data-filter-link="case">View concept art</a>
-            <span class="file__soon">Source code opens after release</span>
+            <a class="btn btn--ghost" href="#gallery" data-filter-link="case" data-i18n="ch.art">View concept art</a>
+            <span class="file__soon" data-i18n="ch.soon">Source code opens after release</span>
           </div>
         </div>
       </article>
 
       <div class="files-grid">
-        <!-- FILE 003 -->
+        <!-- FILE 003 — Battle at Sea -->
         <article class="file file--compact">
           <a class="file__media" href="https://battle-at-see-pirate-edition.vercel.app/" target="_blank" rel="noopener">
             <img src="/assets/gallery/battle-at-sea-cover.jpg" alt="Battle at Sea: a pirate fleet on a battle grid with hits and misses" loading="lazy">
           </a>
           <div class="file__body">
             <div class="file__meta">
-              <span>File 003</span>
-              <span class="status status--live">Released</span>
+              <span><span data-i18n="file">File</span> 003</span>
+              <span class="status status--live" data-i18n="st.released">Released</span>
             </div>
             <h3 class="file__title">Battle at Sea — Pirate Edition</h3>
-            <p class="file__genre">Naval strategy · Browser</p>
-            <p>The classic sea battle with a pirate crew. Place five ships by hand or with one click, then trade cannon fire against the computer or a friend. In two-player mode a “pass the device” screen keeps each fleet secret.</p>
+            <p class="file__genre" data-i18n="bs.genre">Naval strategy · Browser</p>
+            <p data-i18n="bs.p">The classic sea battle with a pirate crew. Place five ships by hand or with one click, then trade cannon fire against the computer or a friend. In two-player mode a “pass the device” screen keeps each fleet secret.</p>
             <ul class="file__specs">
-              <li><b>Modes</b> vs Computer · 2 players on one device</li>
-              <li><b>Stack</b> HTML · CSS · JavaScript</li>
-              <li><b>Extras</b> Sound effects, music, auto-placement</li>
+              <li><b data-i18n="sp.modes">Modes</b><span data-i18n="bs.modes">vs Computer · 2 players on one device</span></li>
+              <li><b data-i18n="sp.stack">Stack</b>HTML · CSS · JavaScript</li>
+              <li><b data-i18n="sp.extras">Extras</b><span data-i18n="bs.extras">Sound effects, music, auto-placement</span></li>
             </ul>
             <div class="file__links">
-              <a class="btn btn--brass" href="https://battle-at-see-pirate-edition.vercel.app/" target="_blank" rel="noopener">Play now
+              <a class="btn btn--brass" href="https://battle-at-see-pirate-edition.vercel.app/" target="_blank" rel="noopener"><span data-i18n="btn.play">Play now</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7 M9 7h8v8"/></svg></a>
             </div>
           </div>
         </article>
 
-        <!-- FILE 004 -->
+        <!-- FILE 004 — Arcana Sort -->
         <article class="file file--compact">
           <a class="file__media" href="https://arcana-sort.vercel.app/" target="_blank" rel="noopener">
             <img src="/assets/gallery/arcana-sort-level.jpg" alt="Arcana Sort: seven glass flasks with layers of colored liquid" loading="lazy">
           </a>
           <div class="file__body">
             <div class="file__meta">
-              <span>File 004</span>
-              <span class="status status--live">Released · 2026</span>
+              <span><span data-i18n="file">File</span> 004</span>
+              <span class="status status--live"><span data-i18n="st.released">Released</span> · 2026</span>
             </div>
             <h3 class="file__title">Arcana Sort</h3>
-            <p class="file__genre">Calm puzzle · Browser</p>
-            <p>A quiet alchemy puzzle. Pour glowing liquids between glass flasks until every color sits in its own flask. Levels grow from two to five colors, against a gentle timer.</p>
+            <p class="file__genre" data-i18n="as.genre">Calm puzzle · Browser</p>
+            <p data-i18n="as.p">A quiet alchemy puzzle. Pour glowing liquids between glass flasks until every color sits in its own flask. Levels grow from two to five colors, against a gentle timer.</p>
             <ul class="file__specs">
-              <li><b>Levels</b> 4 handcrafted puzzles</li>
-              <li><b>Stack</b> HTML · CSS · JavaScript</li>
-              <li><b>Features</b> Undo, hints, pause, saved progress</li>
+              <li><b data-i18n="sp.levels">Levels</b><span data-i18n="as.levels">4 handcrafted puzzles</span></li>
+              <li><b data-i18n="sp.stack">Stack</b>HTML · CSS · JavaScript</li>
+              <li><b data-i18n="sp.features">Features</b><span data-i18n="as.features">Undo, hints, pause, saved progress</span></li>
             </ul>
             <div class="file__links">
-              <a class="btn btn--brass" href="https://arcana-sort.vercel.app/" target="_blank" rel="noopener">Play now
+              <a class="btn btn--brass" href="https://arcana-sort.vercel.app/" target="_blank" rel="noopener"><span data-i18n="btn.play">Play now</span>
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7 M9 7h8v8"/></svg></a>
               <a class="btn btn--ghost" href="https://github.com/MairamKenzh/arcana-sort" target="_blank" rel="noopener">
-                <svg viewBox="0 0 24 24" aria-hidden="true" class="gh"><use href="#gh"/></svg>Source code</a>
+                <svg viewBox="0 0 24 24" aria-hidden="true" class="gh"><use href="#gh"/></svg><span data-i18n="btn.source">Source code</span></a>
             </div>
           </div>
         </article>
       </div>
 
-      <!-- FILE 005 -->
+      <!-- FILE 005 — ваш проект -->
       <article class="file file--open">
         <div class="file__body">
           <div class="file__meta">
-            <span>File 005</span>
-            <span class="status">Open</span>
+            <span><span data-i18n="file">File</span> 005</span>
+            <span class="status" data-i18n="st.open">Open</span>
           </div>
-          <h3 class="file__title">Your game</h3>
-          <p>Have an idea, a game-jam prototype or a brief from a client? Tell us about it. The first consultation is free and you will leave with a clear plan, scope and next steps.</p>
-          <a class="btn btn--brass" href="#contact">Start a project</a>
+          <h3 class="file__title" data-i18n="yg.h">Your game</h3>
+          <p data-i18n="yg.p">Have an idea, a game-jam prototype or a brief from a client? Tell us about it. The first consultation is free and you will leave with a clear plan, scope and next steps.</p>
+          <div class="file__links">
+            <a class="btn btn--brass" href="#estimate" data-i18n="yg.btn">Estimate your project</a>
+            <a class="btn btn--ghost" href="#contact" data-i18n="yg.btn2">Start a project</a>
+          </div>
         </div>
       </article>
     </div>
@@ -247,11 +252,11 @@
   <div class="wrap">
     <div class="sechead sechead--row">
       <div>
-        <p class="eyebrow">03 — Gallery</p>
-        <h2 class="h2">From the studio</h2>
+        <p class="eyebrow" data-i18n="gal.eyebrow">03 — Gallery</p>
+        <h2 class="h2" data-i18n="gal.h2">From the studio</h2>
       </div>
       <div class="filters" role="group" aria-label="Filter gallery">
-        <button class="chip is-on" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip is-on" data-filter="all" aria-pressed="true" data-i18n="gal.all">All</button>
         <button class="chip" data-filter="case" aria-pressed="false">Case History</button>
         <button class="chip" data-filter="card" aria-pressed="false">Last Card</button>
         <button class="chip" data-filter="arcana" aria-pressed="false">Arcana Sort</button>
@@ -261,57 +266,57 @@
 
     <ul class="gallery" id="gallery-grid">
       <li class="g g--wide" data-cat="case">
-        <button class="g__btn" data-full="/assets/gallery/case-history-exterior.jpg" data-caption="Case History — the hotel at night, concept art">
+        <button class="g__btn" data-full="/assets/gallery/case-history-exterior.jpg">
           <img src="/assets/gallery/case-history-exterior.jpg" alt="The hotel at night with lit windows, mountains and fog" loading="lazy">
-          <span class="g__cap"><b>Case History</b> The hotel at night · concept</span>
+          <span class="g__cap"><b>Case History</b><span data-i18n="cap.ext">The hotel at night · concept</span></span>
         </button>
       </li>
       <li class="g g--tall" data-cat="card">
-        <button class="g__btn" data-full="/assets/gallery/last-card-mobile.jpg" data-caption="Last Card — playing on a phone">
+        <button class="g__btn" data-full="/assets/gallery/last-card-mobile.jpg">
           <img src="/assets/gallery/last-card-mobile.jpg" alt="Last Card on a phone screen" loading="lazy">
-          <span class="g__cap"><b>Last Card</b> Mobile view</span>
+          <span class="g__cap"><b>Last Card</b><span data-i18n="cap.mobile">Mobile view</span></span>
         </button>
       </li>
       <li class="g" data-cat="case">
-        <button class="g__btn" data-full="/assets/gallery/case-history-file.jpg" data-caption="Case History — patient file, prop design">
+        <button class="g__btn" data-full="/assets/gallery/case-history-file.jpg">
           <img src="/assets/gallery/case-history-file.jpg" alt="A confidential patient file on a wooden desk" loading="lazy">
-          <span class="g__cap"><b>Case History</b> Patient file · prop</span>
+          <span class="g__cap"><b>Case History</b><span data-i18n="cap.file">Patient file · prop</span></span>
         </button>
       </li>
       <li class="g" data-cat="card">
-        <button class="g__btn" data-full="/assets/gallery/last-card-home.jpg" data-caption="Last Card — home screen with open rooms and rules">
+        <button class="g__btn" data-full="/assets/gallery/last-card-home.jpg">
           <img src="/assets/gallery/last-card-home.jpg" alt="Last Card home screen" loading="lazy">
-          <span class="g__cap"><b>Last Card</b> Home screen</span>
+          <span class="g__cap"><b>Last Card</b><span data-i18n="cap.home">Home screen</span></span>
         </button>
       </li>
       <li class="g g--wide" data-cat="case">
-        <button class="g__btn" data-full="/assets/gallery/case-history-corridor.jpg" data-caption="Case History — east wing corridor, concept art">
+        <button class="g__btn" data-full="/assets/gallery/case-history-corridor.jpg">
           <img src="/assets/gallery/case-history-corridor.jpg" alt="Hotel corridor with doors and a lit doorway" loading="lazy">
-          <span class="g__cap"><b>Case History</b> East wing corridor · concept</span>
+          <span class="g__cap"><b>Case History</b><span data-i18n="cap.corridor">East wing corridor · concept</span></span>
         </button>
       </li>
       <li class="g g--wide" data-cat="card">
-        <button class="g__btn" data-full="/assets/gallery/last-card-table.jpg" data-caption="Last Card — game table with four players">
+        <button class="g__btn" data-full="/assets/gallery/last-card-table.jpg">
           <img src="/assets/gallery/last-card-table.jpg" alt="Last Card game table" loading="lazy">
-          <span class="g__cap"><b>Last Card</b> Game table</span>
+          <span class="g__cap"><b>Last Card</b><span data-i18n="cap.table">Game table</span></span>
         </button>
       </li>
       <li class="g g--wide" data-cat="arcana">
-        <button class="g__btn" data-full="/assets/gallery/arcana-sort-level.jpg" data-caption="Arcana Sort — Level 4, Five Colors">
+        <button class="g__btn" data-full="/assets/gallery/arcana-sort-level.jpg">
           <img src="/assets/gallery/arcana-sort-level.jpg" alt="Arcana Sort level with seven glass flasks" loading="lazy">
-          <span class="g__cap"><b>Arcana Sort</b> Level 4 · Five Colors</span>
+          <span class="g__cap"><b>Arcana Sort</b><span data-i18n="cap.level">Level 4 · Five Colors</span></span>
         </button>
       </li>
       <li class="g g--tall" data-cat="arcana">
-        <button class="g__btn" data-full="/assets/gallery/arcana-sort-mobile.jpg" data-caption="Arcana Sort — playing on a phone">
+        <button class="g__btn" data-full="/assets/gallery/arcana-sort-mobile.jpg">
           <img src="/assets/gallery/arcana-sort-mobile.jpg" alt="Arcana Sort on a phone screen" loading="lazy">
-          <span class="g__cap"><b>Arcana Sort</b> Mobile view</span>
+          <span class="g__cap"><b>Arcana Sort</b><span data-i18n="cap.mobile">Mobile view</span></span>
         </button>
       </li>
       <li class="g g--tall" data-cat="sea">
-        <button class="g__btn" data-full="/assets/gallery/battle-at-sea-cover.jpg" data-caption="Battle at Sea — Pirate Edition, cover art">
+        <button class="g__btn" data-full="/assets/gallery/battle-at-sea-cover.jpg">
           <img src="/assets/gallery/battle-at-sea-cover.jpg" alt="Pirate ships on a battle grid with hits and misses" loading="lazy">
-          <span class="g__cap"><b>Battle at Sea</b> Cover art</span>
+          <span class="g__cap"><b>Battle at Sea</b><span data-i18n="cap.cover">Cover art</span></span>
         </button>
       </li>
     </ul>
@@ -323,42 +328,42 @@
   <div class="wrap founder">
     <aside class="card-id">
       <div class="card-id__photo" aria-hidden="true">
-        <!-- Замените на своё фото: <img src="/assets/founder.jpg" alt="Mairam K."> -->
+        <!-- Замените на своё фото: <img src="/assets/founder.jpg" alt=""> -->
         <span>MK</span>
       </div>
-      <h3 class="card-id__name">Mairam K.</h3>
-      <p class="card-id__role">Founder · Game Developer</p>
+      <h3 class="card-id__name" data-i18n="fd.name">Mairam K.</h3>
+      <p class="card-id__role" data-i18n="fd.role">Founder · Game Developer</p>
       <ul class="card-id__list">
-        <li><span>Focus</span>Gameplay, multiplayer, narrative</li>
-        <li><span>Languages</span>English, Russian</li>
-        <li><span>Works</span>Remote · worldwide</li>
+        <li><span data-i18n="fd.focus">Focus</span><b data-i18n="fd.focusV">Gameplay, multiplayer, narrative</b></li>
+        <li><span data-i18n="fd.langs">Languages</span><b data-i18n="fd.langsV">English, Russian</b></li>
+        <li><span data-i18n="fd.works">Works</span><b data-i18n="fd.worksV">Remote · worldwide</b></li>
       </ul>
       <a class="btn btn--ghost btn--full" href="https://github.com/MairamKenzh" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" aria-hidden="true" class="gh"><use href="#gh"/></svg>github.com/MairamKenzh</a>
     </aside>
 
     <div class="cv">
-      <p class="eyebrow">04 — Founder</p>
-      <h2 class="h2">The person <em>behind the lantern</em></h2>
-      <p class="cv__lead">Mairam founded Moth &amp; Lantern to make games that combine careful design with solid engineering. She writes the code, designs the interface and shapes the story — and handles every client project personally.</p>
+      <p class="eyebrow" data-i18n="fd.eyebrow">04 — Founder</p>
+      <h2 class="h2" data-i18n="fd.h2">The person <em>behind the lantern</em></h2>
+      <p class="cv__lead" data-i18n="fd.lead">Mairam founded Moth &amp; Lantern to make games that combine careful design with solid engineering. She writes the code, designs the interface and shapes the story — and handles every client project personally.</p>
 
       <div class="cv__grid">
         <div class="cv__block">
-          <h3>Skills</h3>
+          <h3 data-i18n="fd.skills">Skills</h3>
           <ul class="skills">
-            <li><b>Game engines</b><span>Unity, C#</span></li>
-            <li><b>Web &amp; backend</b><span>JavaScript, Node.js, Express, Socket.IO, HTML/CSS</span></li>
-            <li><b>Design</b><span>Game UI/UX, narrative &amp; puzzle design, visual composition</span></li>
-            <li><b>Tools</b><span>Git &amp; GitHub, Render, Adobe Illustrator, VS Code</span></li>
+            <li><b data-i18n="sk1">Game engines</b><span>Unity, C#</span></li>
+            <li><b data-i18n="sk2">Web &amp; backend</b><span>JavaScript, Node.js, Express, Socket.IO, HTML/CSS</span></li>
+            <li><b data-i18n="sk3">Design</b><span data-i18n="sk3v">Game UI/UX, narrative &amp; puzzle design, visual composition</span></li>
+            <li><b data-i18n="sk4">Tools</b><span data-i18n="sk4v">Git &amp; GitHub, Render, Vercel, Adobe Illustrator, VS Code</span></li>
           </ul>
         </div>
         <div class="cv__block">
-          <h3>Timeline</h3>
+          <h3 data-i18n="fd.timeline">Timeline</h3>
           <ol class="timeline">
-            <li><time>2026</time><div><b>Studio founded</b>Moth &amp; Lantern opens for its first projects.</div></li>
-            <li><time>2026</time><div><b>Three browser games released</b>Last Card, Battle at Sea and Arcana Sort — playable on any device.</div></li>
-            <li><time>2026</time><div><b>Case History in production</b>Story research, design and Unity development of Act I.</div></li>
-            <li class="is-next"><time>2027</time><div><b>Case History · Act I</b>Planned release.</div></li>
+            <li><time>2026</time><div><b data-i18n="tl1">Studio founded</b><span data-i18n="tl1v">Moth &amp; Lantern opens for its first projects.</span></div></li>
+            <li><time>2026</time><div><b data-i18n="tl2">Three browser games released</b><span data-i18n="tl2v">Last Card, Battle at Sea and Arcana Sort — playable on any device.</span></div></li>
+            <li><time>2026</time><div><b data-i18n="tl3">Case History in production</b><span data-i18n="tl3v">Story research, design and Unity development of Act I.</span></div></li>
+            <li class="is-next"><time>2027</time><div><b data-i18n="tl4">Case History · Act I</b><span data-i18n="tl4v">Planned release.</span></div></li>
           </ol>
         </div>
       </div>
@@ -370,15 +375,71 @@
 <section class="section" id="process">
   <div class="wrap">
     <div class="sechead">
-      <p class="eyebrow">05 — Process</p>
-      <h2 class="h2">How we work together</h2>
+      <p class="eyebrow" data-i18n="pr.eyebrow">05 — Process</p>
+      <h2 class="h2" data-i18n="pr.h2">How we work together</h2>
     </div>
     <ol class="steps">
-      <li><span class="steps__n">1</span><h3>Consultation</h3><p>A free 30-minute call. We discuss your idea, audience, platform and budget.</p></li>
-      <li><span class="steps__n">2</span><h3>Plan &amp; prototype</h3><p>You get a scope document and a playable prototype of the core mechanic.</p></li>
-      <li><span class="steps__n">3</span><h3>Production</h3><p>Weekly builds you can play. Feedback goes straight into the next build.</p></li>
-      <li><span class="steps__n">4</span><h3>Launch &amp; support</h3><p>We deploy the game, hand over the source code and stay on for fixes.</p></li>
+      <li><span class="steps__n">1</span><h3 data-i18n="pr1">Consultation</h3><p data-i18n="pr1v">A free 30-minute call. We discuss your idea, audience, platform and budget.</p></li>
+      <li><span class="steps__n">2</span><h3 data-i18n="pr2">Plan &amp; prototype</h3><p data-i18n="pr2v">You get a scope document and a playable prototype of the core mechanic.</p></li>
+      <li><span class="steps__n">3</span><h3 data-i18n="pr3">Production</h3><p data-i18n="pr3v">Weekly builds you can play. Feedback goes straight into the next build.</p></li>
+      <li><span class="steps__n">4</span><h3 data-i18n="pr4">Launch &amp; support</h3><p data-i18n="pr4v">We deploy the game, hand over the source code and stay on for fixes.</p></li>
     </ol>
+  </div>
+</section>
+
+<!-- ============ ESTIMATE (калькулятор) ============ -->
+<section class="section section--alt" id="estimate">
+  <div class="wrap">
+    <div class="sechead">
+      <p class="eyebrow" data-i18n="es.eyebrow">06 — Estimate</p>
+      <h2 class="h2" data-i18n="es.h2">Estimate <em>your game</em></h2>
+      <p class="sechead__note" data-i18n="es.note">Pick a few options to see a rough timeline and budget. You can send the result with your request.</p>
+    </div>
+
+    <div class="calc" id="calc">
+      <div class="calc__form">
+        <fieldset class="calc__group">
+          <legend data-i18n="es.type">Type of game</legend>
+          <div class="opts opts--4">
+            <label class="opt"><input type="radio" name="c-type" value="browser" checked><span class="opt__box"><b data-i18n="es.t.browser">Browser game</b><small data-i18n="es.t.browserD">Plays from a link</small></span></label>
+            <label class="opt"><input type="radio" name="c-type" value="mobile"><span class="opt__box"><b data-i18n="es.t.mobile">Mobile game</b><small data-i18n="es.t.mobileD">iOS &amp; Android</small></span></label>
+            <label class="opt"><input type="radio" name="c-type" value="pc"><span class="opt__box"><b data-i18n="es.t.pc">PC game (Unity)</b><small>Steam · itch.io</small></span></label>
+            <label class="opt"><input type="radio" name="c-type" value="proto"><span class="opt__box"><b data-i18n="es.t.proto">Prototype</b><small data-i18n="es.t.protoD">Test one idea fast</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="calc__group">
+          <legend data-i18n="es.size">Size</legend>
+          <div class="opts opts--3">
+            <label class="opt"><input type="radio" name="c-size" value="s"><span class="opt__box"><b data-i18n="es.s.s">Small</b><small data-i18n="es.s.sD">1–2 levels or modes</small></span></label>
+            <label class="opt"><input type="radio" name="c-size" value="m" checked><span class="opt__box"><b data-i18n="es.s.m">Medium</b><small data-i18n="es.s.mD">5–10 levels</small></span></label>
+            <label class="opt"><input type="radio" name="c-size" value="l"><span class="opt__box"><b data-i18n="es.s.l">Large</b><small data-i18n="es.s.lD">Full release</small></span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="calc__group">
+          <legend data-i18n="es.feat">Features</legend>
+          <div class="feats">
+            <label class="feat"><input type="checkbox" name="c-feat" value="multi"><span data-i18n="es.f.multi">Online multiplayer</span></label>
+            <label class="feat"><input type="checkbox" name="c-feat" value="story"><span data-i18n="es.f.story">Story &amp; dialogue</span></label>
+            <label class="feat"><input type="checkbox" name="c-feat" value="art"><span data-i18n="es.f.art">Original art &amp; animation</span></label>
+            <label class="feat"><input type="checkbox" name="c-feat" value="sound"><span data-i18n="es.f.sound">Sound &amp; music</span></label>
+            <label class="feat"><input type="checkbox" name="c-feat" value="saves"><span data-i18n="es.f.saves">Saves &amp; leaderboards</span></label>
+            <label class="feat"><input type="checkbox" name="c-feat" value="l10n"><span data-i18n="es.f.l10n">Two languages</span></label>
+          </div>
+        </fieldset>
+      </div>
+
+      <aside class="calc__result" aria-live="polite">
+        <p class="calc__label" data-i18n="es.timeline">Timeline</p>
+        <p class="calc__big" id="calc-weeks">—</p>
+        <div class="calc__bar" aria-hidden="true"><span id="calc-bar"></span></div>
+        <p class="calc__label" data-i18n="es.budget">Budget</p>
+        <p class="calc__big" id="calc-cost">—</p>
+        <p class="calc__note" data-i18n="es.disclaimer">Rough estimate based on similar projects. After the consultation you get an exact quote.</p>
+        <button class="btn btn--brass btn--full" id="calc-send" type="button" data-i18n="es.send">Send with my request</button>
+      </aside>
+    </div>
   </div>
 </section>
 
@@ -386,68 +447,75 @@
 <section class="section section--contact" id="contact">
   <div class="wrap contact">
     <div class="contact__info">
-      <p class="eyebrow">06 — Contact</p>
-      <h2 class="h2">Book a <em>free</em> consultation</h2>
-      <p>Tell us a little about your project. We will reply within one working day with questions and a time for a call.</p>
+      <p class="eyebrow" data-i18n="ct.eyebrow">07 — Contact</p>
+      <h2 class="h2" data-i18n="ct.h2">Book a <em>free</em> consultation</h2>
+      <p data-i18n="ct.p">Tell us a little about your project. We will reply within one working day with questions and a time for a call.</p>
       <ul class="contact__points">
-        <li>No obligation and no fee for the first call</li>
-        <li>Your idea stays confidential</li>
-        <li>Answer in English or Russian</li>
+        <li data-i18n="ct.pt1">No obligation and no fee for the first call</li>
+        <li data-i18n="ct.pt2">Your idea stays confidential</li>
+        <li data-i18n="ct.pt3">Answer in English or Russian</li>
       </ul>
     </div>
 
     <form class="form" id="lead-form" novalidate>
+      <div class="attached" id="attached" hidden>
+        <div>
+          <p class="attached__label" data-i18n="ct.attached">Estimate attached</p>
+          <p class="attached__text" id="attached-text"></p>
+        </div>
+        <button type="button" class="attached__x" id="attached-x" aria-label="Remove estimate">×</button>
+      </div>
       <div class="form__row">
         <label class="field">
-          <span class="field__label">Your name</span>
-          <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="Alex Morgan">
+          <span class="field__label" data-i18n="f.name">Your name</span>
+          <input id="f-name" name="name" type="text" autocomplete="name" maxlength="80" required placeholder="Alex Morgan" data-i18n-ph="f.nameP">
           <span class="field__err" data-for="name"></span>
         </label>
         <label class="field">
-          <span class="field__label">Email or Telegram</span>
-          <input id="f-contact" name="contact" type="text" autocomplete="email" maxlength="120" required placeholder="alex@studio.com or @alex">
+          <span class="field__label" data-i18n="f.contact">Email or Telegram</span>
+          <input id="f-contact" name="contact" type="text" autocomplete="email" maxlength="120" required placeholder="alex@studio.com or @alex" data-i18n-ph="f.contactP">
           <span class="field__err" data-for="contact"></span>
         </label>
       </div>
       <div class="form__row">
         <label class="field">
-          <span class="field__label">Project type</span>
+          <span class="field__label" data-i18n="f.type">Project type</span>
           <select id="f-type" name="type" required>
-            <option value="">Choose one</option>
-            <option>PC or console game</option>
-            <option>Mobile game</option>
-            <option>Browser / multiplayer game</option>
-            <option>Prototype or game jam</option>
-            <option>Game art &amp; UI</option>
-            <option>Other</option>
+            <option value="" data-i18n="f.choose">Choose one</option>
+            <option value="PC or console game" data-i18n="f.o1">PC or console game</option>
+            <option value="Mobile game" data-i18n="f.o2">Mobile game</option>
+            <option value="Browser / multiplayer game" data-i18n="f.o3">Browser / multiplayer game</option>
+            <option value="Prototype or game jam" data-i18n="f.o4">Prototype or game jam</option>
+            <option value="Game art &amp; UI" data-i18n="f.o5">Game art &amp; UI</option>
+            <option value="Other" data-i18n="f.o6">Other</option>
           </select>
           <span class="field__err" data-for="type"></span>
         </label>
         <label class="field">
-          <span class="field__label">Budget <i>(optional)</i></span>
+          <span class="field__label" data-i18n="f.budget">Budget <i>(optional)</i></span>
           <select id="f-budget" name="budget">
-            <option value="">Not sure yet</option>
-            <option>Under $1,000</option>
-            <option>$1,000 – $5,000</option>
-            <option>$5,000 – $15,000</option>
-            <option>$15,000+</option>
+            <option value="" data-i18n="f.b0">Not sure yet</option>
+            <option value="Under $1,000" data-i18n="f.b1">Under $1,000</option>
+            <option value="$1,000 – $5,000">$1,000 – $5,000</option>
+            <option value="$5,000 – $15,000">$5,000 – $15,000</option>
+            <option value="$15,000+" data-i18n="f.b4">$15,000+</option>
           </select>
         </label>
       </div>
       <label class="field">
-        <span class="field__label">About your project</span>
-        <textarea id="f-message" name="message" rows="5" maxlength="2000" required placeholder="What kind of game is it, who is it for, and when do you need it?"></textarea>
+        <span class="field__label" data-i18n="f.msg">About your project</span>
+        <textarea id="f-message" name="message" rows="5" maxlength="2000" required placeholder="What kind of game is it, who is it for, and when do you need it?" data-i18n-ph="f.msgP"></textarea>
         <span class="field__err" data-for="message"></span>
       </label>
       <!-- ловушка для спам-ботов: людям не видна -->
       <label class="hp" aria-hidden="true">Website<input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></label>
       <label class="check">
         <input id="f-consent" name="consent" type="checkbox" required>
-        <span>I agree that my details will be used only to reply to this request.</span>
+        <span data-i18n="f.consent">I agree that my details will be used only to reply to this request.</span>
       </label>
       <span class="field__err" data-for="consent"></span>
       <div class="form__foot">
-        <button class="btn btn--brass btn--lg" type="submit" id="f-submit">Send request</button>
+        <button class="btn btn--brass btn--lg" type="submit" id="f-submit" data-i18n="f.send">Send request</button>
         <p class="form__status" id="f-status" role="status" aria-live="polite"></p>
       </div>
     </form>
@@ -463,12 +531,13 @@
       <span class="brand__name">Moth <i>&amp;</i> Lantern</span>
     </a>
     <nav class="foot__nav" aria-label="Footer">
-      <a href="#projects">Projects</a>
-      <a href="#gallery">Gallery</a>
-      <a href="#contact">Contact</a>
+      <a href="#projects" data-i18n="nav.projects">Projects</a>
+      <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+      <a href="#estimate" data-i18n="nav.estimate">Estimate</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="https://github.com/MairamKenzh" target="_blank" rel="noopener">GitHub</a>
     </nav>
-    <p class="foot__copy">© <span id="year">2026</span> Moth &amp; Lantern. Independent game studio.</p>
+    <p class="foot__copy">© <span id="year">2026</span> Moth &amp; Lantern. <span data-i18n="foot.copy">Independent game studio.</span></p>
   </div>
 </footer>
 
@@ -498,6 +567,7 @@
   </symbol>
 </svg>
 
+<script src="/i18n.js"></script>
 <script src="/main.js"></script>
 </body>
 </html>

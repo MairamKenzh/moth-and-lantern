@@ -144,7 +144,7 @@ async function handleContact(req, res) {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ chat_id: CHAT_ID, text, parse_mode: "HTML", disable_web_page_preview: true }),
-      signal: AbortSignal.timeout(10000),
+         signal: AbortSignal.timeout(30000),
     });
     const out = await r.json().catch(() => ({}));
     if (!r.ok || !out.ok) {
