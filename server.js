@@ -93,12 +93,12 @@ function readBody(req, limit) {
 
 async function handleContact(req, res) {
   const ip = clientIp(req);
-  if (limited(ip)) return json(res, 429, { ok: false, error: "Too many requests. Please try again in a few minutes." });
+  if (limited(ip)) return json(res, 429, { ok: false, code: "rate", error: "Too many requests. Please try again in a few minutes." });
 
   let data;
   try { data = JSON.parse(await readBody(req, 10 * 1024)); }
-  catch { return json(res, 400, { ok: false, error: "Could not read the form. Please try again." }); }
-  if (!data || typeof data !== "object") return json(res, 400, { ok: false, error: "Could not read the form. Please try again." });
+  catch { return json(res, 400, { ok: false, code: "invalid", error: "Could not read the form. Please try again." }); }
+  if (!data || typeof data !== "object") return json(res, 400, { ok: false, code: "invalid", error: "Could not read the form. Please try again." });
 
   // honeypot: real visitors never fill this hidden field
   if (clean(data.website, 200)) return json(res, 200, { ok: true });
@@ -109,16 +109,18 @@ async function handleContact(req, res) {
     type: clean(data.type, 60),
     budget: clean(data.budget, 40),
     message: clean(data.message, 2000),
+    estimate: clean(data.estimate, 300),
+    lang: data.lang === "ru" ? "RU" : "EN",
   };
-  if (lead.name.length < 2) return json(res, 400, { ok: false, error: "Please enter your name." });
-  if (lead.contact.length < 3) return json(res, 400, { ok: false, error: "Please enter an email or Telegram username." });
-  if (!TYPES.includes(lead.type)) return json(res, 400, { ok: false, error: "Please choose a project type." });
+  if (lead.name.length < 2) return json(res, 400, { ok: false, code: "invalid", error: "Please enter your name." });
+  if (lead.contact.length < 3) return json(res, 400, { ok: false, code: "invalid", error: "Please enter an email or Telegram username." });
+  if (!TYPES.includes(lead.type)) return json(res, 400, { ok: false, code: "invalid", error: "Please choose a project type." });
   if (!BUDGETS.includes(lead.budget)) lead.budget = "";
-  if (lead.message.length < 10) return json(res, 400, { ok: false, error: "Please tell us a bit more about the project." });
+  if (lead.message.length < 10) return json(res, 400, { ok: false, code: "invalid", error: "Please tell us a bit more about the project." });
 
   if (!BOT_TOKEN || !CHAT_ID) {
     console.error("[contact] BOT_TOKEN or CHAT_ID is not set — request not delivered:", lead);
-    return json(res, 503, { ok: false, error: "The form is not connected yet. Please contact us on GitHub." });
+    return json(res, 503, { ok: false, code: "notConfigured", error: "The form is not connected yet. Please contact us on GitHub." });
   }
 
   const text = [
@@ -128,6 +130,8 @@ async function handleContact(req, res) {
     "<b>Contact:</b> " + escapeHtml(lead.contact),
     "<b>Project:</b> " + escapeHtml(lead.type),
     "<b>Budget:</b> " + escapeHtml(lead.budget || "not specified"),
+    "<b>Site language:</b> " + lead.lang,
+    ...(lead.estimate ? ["", "<b>📐 Estimate:</b> " + escapeHtml(lead.estimate)] : []),
     "",
     "<b>Message:</b>",
     escapeHtml(lead.message),
@@ -145,13 +149,13 @@ async function handleContact(req, res) {
     const out = await r.json().catch(() => ({}));
     if (!r.ok || !out.ok) {
       console.error("[contact] Telegram error:", r.status, out.description || "");
-      return json(res, 502, { ok: false, error: "We could not deliver your request. Please try again later." });
+      return json(res, 502, { ok: false, code: "delivery", error: "We could not deliver your request. Please try again later." });
     }
     console.log("[contact] request delivered from", lead.name);
     return json(res, 200, { ok: true });
   } catch (e) {
     console.error("[contact] Telegram unreachable:", e.message);
-    return json(res, 502, { ok: false, error: "We could not deliver your request. Please try again later." });
+    return json(res, 502, { ok: false, code: "delivery", error: "We could not deliver your request. Please try again later." });
   }
 }
 
